@@ -1,7 +1,5 @@
 # Learning DSA
 
-# 🚀 My DSA Journey (Interview Prep)
-
 A simple, focused workspace where I track the Data Structures and Algorithms questions I solve. My ultimate goal is to master problem-solving patterns, crush technical interviews, and land a great software engineering job in tech.
 
 Built entirely using **VS Code** and the **Mac Terminal** (`clang++`).
