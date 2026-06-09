@@ -6,13 +6,6 @@ Built entirely using **VS Code** and the **Mac Terminal** (`clang++`).
 
 ---
 
-## 📈 Completed Topics
-
-### 🟢 Basic Sorting 
-- [x] [Selection Sort](./Basic_Sorting/SelectionSort.cpp) - $O(N^2)$ time, $O(1)$ space
-
----
-
 ## 💡 Interview Prep Mindset
 - **Analyze Complexity:** Always identify and document the Time and Space Big-O notation.
 - **Write Clean Code:** Focus on descriptive variable names and structured logic.
