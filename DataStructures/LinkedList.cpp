@@ -32,6 +32,10 @@ int main(){
 
     vector <int> arr = {2,3,4,5,1,6,7};
     Node* head = ConvertArr2LL(arr);
-    cout<<head->next->next->data;
+    Node* temp = head;
+    while (temp != nullptr){
+        cout<<temp->data<<" ";
+        temp = temp->next;
+    }
     return 0;
 }
