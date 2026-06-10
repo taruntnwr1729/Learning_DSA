@@ -37,7 +37,20 @@ int lengthcheckfun(Node* head){
     return count;
 
 }
+int Search(Node* head, int val){
+    int found = 0;
+    Node* temp = head;
+    while (temp != nullptr){
+        if(temp->data= val){
+            return 1;
+        }else{
+            temp = temp->next;
+            
+        }   
+        }
+    return 0;
 
+}
 
 int main(){
 
@@ -51,5 +64,7 @@ int main(){
     cout<<endl;
 
     cout<<lengthcheckfun(head);
+    cout<<endl;
+    cout<<Search(head,5);
     return 0;
 }
