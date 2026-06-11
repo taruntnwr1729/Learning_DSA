@@ -14,6 +14,14 @@ struct Node{
     }
 };
 
+void print(Node* head){
+    while(head!=NULL){
+        cout<<head->data<<" ";
+        head= head->next;
+    }
+    cout<<endl;
+}
+
 Node* ConvertArr2LL(vector<int> &arr){
     Node* head = new Node(arr[0]);
     Node* mover = head;
@@ -41,7 +49,7 @@ int Search(Node* head, int val){
     int found = 0;
     Node* temp = head;
     while (temp != nullptr){
-        if(temp->data= val){
+        if(temp->data == val){
             return 1;
         }else{
             temp = temp->next;
@@ -65,19 +73,30 @@ Node* DeleteHeadFun(Node* head){
     return head;
 }
 
-void print(Node* head){
-    while(head!=NULL){
-        cout<<head->data;
-        head= head->next;
+
+
+Node* RemoveLast(Node* head){
+    
+    if (head == NULL || head->next == NULL){
+        return NULL;
     }
-    cout<<endl;
-}
+    
+    Node* temp = head;
+    while(temp->next->next != NULL){
+            temp = temp->next;
+        }
+        
+        temp->next= NULL;    
+    
+    return head;
+
+    }
 
 int main(){
 
     vector <int> arr = {2,3,4,5,1,6,7};
     Node* head = ConvertArr2LL(arr);
-    head = DeleteHeadFun(head);
+    head = RemoveLast(head);
     print(head);
     return 0;
 }
