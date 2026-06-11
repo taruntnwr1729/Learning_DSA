@@ -116,7 +116,7 @@ Node* RemoveK(Node* head, int k){
     return head;
 }
 
-Node* Insertion(Node* head, int val){
+Node* InsertHead(Node* head, int val){
     Node* temp;
     temp->data=val;
     temp->next = head;
@@ -125,11 +125,28 @@ Node* Insertion(Node* head, int val){
     return head;
 }
 
+Node* InsertLast(Node* head, int val){
+    if (head == NULL){
+        return new Node(val);
+    }
+    Node* temp = head;
+    while(temp->next !=NULL){
+        temp = temp->next;
+
+    }
+
+    Node* newNode = new Node(val);
+    temp ->next = newNode;
+    newNode->next = NULL;
+    return head;
+
+    }
+
 int main(){
 
     vector <int> arr = {2,3,4,5,1,6,7};
     Node* head = ConvertArr2LL(arr);
-    head = Insertion(head,5);
+    head = InsertLast(head,5);
     print(head);
     return 0;
 }
