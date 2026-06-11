@@ -142,11 +142,44 @@ Node* InsertLast(Node* head, int val){
 
     }
 
+Node* InsertK(Node* head, int val, int k){
+    if (head == NULL){
+        if(k==1){
+        return new Node(val);
+        }else{
+            return head;
+        }
+    }
+    if(k==1){
+        Node* temp;
+        temp->data=val;
+        temp->next = head;
+        head = temp;
+
+        return head;
+    }
+    int count = 0;
+    Node* temp = head;
+    Node* newNode = new Node(val);
+    
+    while(temp != NULL){
+        if (count == (k - 1)){
+            newNode->next = temp->next;
+            temp->next = newNode;
+            break;
+        }
+        count++;
+        temp = temp->next;
+    }
+
+    return head;
+}
+
 int main(){
 
     vector <int> arr = {2,3,4,5,1,6,7};
     Node* head = ConvertArr2LL(arr);
-    head = InsertLast(head,5);
+    head = InsertK(head,100,4);
     print(head);
     return 0;
 }
