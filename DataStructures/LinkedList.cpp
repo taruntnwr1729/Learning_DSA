@@ -51,20 +51,33 @@ int Search(Node* head, int val){
     return 0;
 
 }
+Node* DeleteHeadFun(Node* head){
+
+    if (head == NULL){
+        return head;
+
+    }else{
+        Node* temp = head;
+        head = head->next;
+        delete temp;
+    }
+
+    return head;
+}
+
+void print(Node* head){
+    while(head!=NULL){
+        cout<<head->data;
+        head= head->next;
+    }
+    cout<<endl;
+}
 
 int main(){
 
     vector <int> arr = {2,3,4,5,1,6,7};
     Node* head = ConvertArr2LL(arr);
-    Node* temp = head;
-    while (temp != nullptr){
-        cout<<temp->data<<" ";
-        temp = temp->next;
-    }
-    cout<<endl;
-
-    cout<<lengthcheckfun(head);
-    cout<<endl;
-    cout<<Search(head,5);
+    head = DeleteHeadFun(head);
+    print(head);
     return 0;
 }
