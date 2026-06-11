@@ -116,11 +116,20 @@ Node* RemoveK(Node* head, int k){
     return head;
 }
 
+Node* Insertion(Node* head, int val){
+    Node* temp;
+    temp->data=val;
+    temp->next = head;
+    head = temp;
+
+    return head;
+}
+
 int main(){
 
     vector <int> arr = {2,3,4,5,1,6,7};
     Node* head = ConvertArr2LL(arr);
-    head = RemoveK(head,5);
+    head = Insertion(head,5);
     print(head);
     return 0;
 }
