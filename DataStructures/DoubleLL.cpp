@@ -102,7 +102,7 @@ Node* insertK(Node* head, int k, int el){
     while(temp != NULL){
         if (k==1){
             newNode->back=head;
-            newNode->next = nullptr
+            newNode->next = nullptr;
         }
         if(count == k-1){
             temp->next = newNode;
