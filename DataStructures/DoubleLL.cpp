@@ -133,7 +133,7 @@ Node* removeK(Node* head, int k){
 
 }
 
-Node* InsertBefore(Node* head, int val){
+Node* InsertBeforeHead(Node* head, int val){
     Node* newNode = new Node(val);
 
     newNode->next = head;
@@ -144,10 +144,34 @@ Node* InsertBefore(Node* head, int val){
     return head;
 }
 
+Node* InsertBeforeTail(Node* head, int val){
+    Node* temp = head;
+    Node* newNode = new Node(val);
+
+    if(head->next == NULL){
+        return InsertBeforeHead(head, val);
+    }
+    while(temp->next !=NULL){
+        temp= temp->next;
+        
+    }
+
+    Node* tail = temp; 
+    Node* prev = tail->back;
+    Node* newNode = new Node(val);
+
+    newNode->next = tail;
+    newNode->back = prev;
+    prev->next = newNode;
+    tail->back = newNode;
+
+    return head;
+}
+
 int main(){
     vector <int> arr = {2,3,4,5,1,6,7};
     Node* head = convertArr2DLL(arr);
-    removeK(head,3);
+    InsertBeforeTail(head,3);
     printForward(head);
 
     return 0;
