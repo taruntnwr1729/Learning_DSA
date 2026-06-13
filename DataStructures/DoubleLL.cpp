@@ -168,6 +168,33 @@ Node* InsertBeforeTail(Node* head, int val){
     return head;
 }
 
+Node* InsertBeforeK(Node* head, int k, int val){
+    Node* temp = head;
+    Node* newNode = new Node(val);
+    int count = 0;
+
+    while(temp !=NULL){
+
+        if(k==1){
+            return InsertBeforeHead(head,val);
+        }
+        if (count == k){
+            break;
+        }
+        temp = temp->next;
+        count++;
+    }
+
+        Node* prev = temp->back;
+        newNode->next = temp;
+        newNode->back = prev;
+        prev->next = newNode;
+        temp->back = newNode;
+    
+    return head;
+
+}
+
 int main(){
     vector <int> arr = {2,3,4,5,1,6,7};
     Node* head = convertArr2DLL(arr);
