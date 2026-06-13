@@ -90,10 +90,81 @@ Node* deleteTail(Node* head){
     return head;
 }
 
+Node* insertK(Node* head, int k, int el){
+    int count = 0;
+    Node* temp = head ;
+    Node* newNode = new Node(el);
+
+    if (head==NULL){
+        return NULL;
+    }
+
+    while(temp != NULL){
+        if (k==1){
+            newNode->back=head;
+            newNode->next = nullptr
+        }
+        if(count == k-1){
+            temp->next = newNode;
+            newNode->back = temp;
+            newNode->next= temp->next->next;
+            newNode->next->back= newNode;
+
+        }
+
+        count++;
+        temp = temp->next;
+    }
+
+    return head;
+}
+
+Node* removeK(Node* head, int k){
+    if (head==NULL){
+        return NULL;
+    }
+    int count = 0;
+    Node* temp=head;
+    while(temp!=NULL){
+        count++;
+        if (count==k){
+            break;
+        
+        }
+        temp= temp->next;
+    }
+    if (temp==nullptr){
+        return head;
+    }
+    Node* prev = temp->back;
+    Node* front = temp->next;
+
+    if(prev == NULL && front == NULL){
+        delete temp;
+        return NULL;
+
+    }else if(prev==NULL){
+
+        DeleteHead(head);
+
+    }else if(front == NULL){
+
+        deleteTail(head);
+    }else{
+        prev->next = front;
+        front->back = prev;
+        temp->next = nullptr;
+        temp->back = nullptr;
+    }
+
+    return head;
+
+}
 
 int main(){
     vector <int> arr = {2,3,4,5,1,6,7};
     Node* head = convertArr2DLL(arr);
+    removeK(head,3);
     printForward(head);
 
     return 0;
