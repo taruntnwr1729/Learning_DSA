@@ -90,35 +90,6 @@ Node* deleteTail(Node* head){
     return head;
 }
 
-Node* insertK(Node* head, int k, int el){
-    int count = 0;
-    Node* temp = head ;
-    Node* newNode = new Node(el);
-
-    if (head==NULL){
-        return NULL;
-    }
-
-    while(temp != NULL){
-        if (k==1){
-            newNode->back=head;
-            newNode->next = nullptr;
-        }
-        if(count == k-1){
-            temp->next = newNode;
-            newNode->back = temp;
-            newNode->next= temp->next->next;
-            newNode->next->back= newNode;
-
-        }
-
-        count++;
-        temp = temp->next;
-    }
-
-    return head;
-}
-
 Node* removeK(Node* head, int k){
     if (head==NULL){
         return NULL;
@@ -159,6 +130,18 @@ Node* removeK(Node* head, int k){
 
     return head;
 
+
+}
+
+Node* InsertBefore(Node* head, int val){
+    Node* newNode = new Node(val);
+
+    newNode->next = head;
+    newNode->back = nullptr;
+    head->back = newNode;
+    head = newNode;
+    
+    return head;
 }
 
 int main(){
