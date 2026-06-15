@@ -44,6 +44,13 @@ Node* DeleteNLast(Node* head , int n){
         fast = fast->next;
     }
     Node* slow = head;
+
+    
+    if (fast == nullptr) {
+        Node* newHead = head->next; 
+        delete head;                
+        return newHead;             
+}
     
 
     while(fast->next != NULL){
@@ -69,7 +76,8 @@ int main(){
     Node* head = ConvertArr2LL(arr);
     int n = 2;
     
-    print(head);
+    Node* newHead = DeleteNLast(head, 2);
+    print(newHead);
     return 0;
 }
 
