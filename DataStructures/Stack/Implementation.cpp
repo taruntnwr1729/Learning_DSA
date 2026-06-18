@@ -3,7 +3,7 @@
 #include <algorithm>
 
 using namespace std;
-
+/*------QUEUE------*/
 class QImpl{
     int start = 0;
     int Q[10];
@@ -41,6 +41,7 @@ class QImpl{
 
 };
 
+/*------STACK------*/
 
 class stImpl{
     int top = -1;
@@ -78,7 +79,7 @@ class stImpl{
     }
 };
 
-
+/*-----STACK USING LINKED LIST-----*/
 struct Node{
     public:
     int data;
