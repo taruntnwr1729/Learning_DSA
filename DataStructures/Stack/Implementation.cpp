@@ -12,7 +12,7 @@ class stQImpl{
     public:
     int end = -1;
     void push(int x){
-        if ( end >= 10 ){
+        if ( end >= 9 ){
             cout<<"Overflow"<<endl;
         }else{
             end = end + 1;
@@ -21,19 +21,20 @@ class stQImpl{
     }
 
     int topfun(){
-        if (end== -1){
+        if (end == -1){
             cout<<"Stack is empty";
+            return -1;
         }else{
             return stack[start];
         }
     }
 
     void pop(){
-        if (end = -1){
+        if (end == -1){
             cout<<"Stack is empty";
         }else{
             
-            start = start + 1
+            start = start + 1;
         }
 
     }
@@ -49,7 +50,7 @@ class stImpl{
 
     void push(int x){
         
-        if (top>=10){
+        if (top>=9){
             cout<<"Overflow"<<endl; 
         }else{
         top = top + 1;
@@ -77,6 +78,36 @@ class stImpl{
     }
 };
 
+
+struct Node{
+    public:
+    int data;
+    Node* next;
+
+    public:
+    Node(int data1){
+        data = data1;
+        next = nullptr;
+    }
+};
+
+
+class StackLL{
+
+    Node* top;
+    int size = 0;
+
+    void push(int x){
+        Node* temp = new Node(x);
+        temp->next = top;
+        top = temp;
+        size = size + 1;
+        
+    }
+
+
+};
+
 int main(){
 
     stImpl s;
@@ -87,8 +118,7 @@ int main(){
     s.push(20);
     cout << "Top element: " << s.topfun() << endl;
     s.pop();
-    cout << "Top element: " << s.topfun() << endl; // Should print 10
-
+    cout << "Top element: " << s.topfun() << endl; 
 
 
     s1.push(5);
