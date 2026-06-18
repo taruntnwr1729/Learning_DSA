@@ -4,9 +4,9 @@
 
 using namespace std;
 
-class stQImpl{
+class QImpl{
     int start = 0;
-    int stack[10];
+    int Q[10];
     
 
     public:
@@ -16,22 +16,22 @@ class stQImpl{
             cout<<"Overflow"<<endl;
         }else{
             end = end + 1;
-            stack[end] = x;
+            Q[end] = x;
         }
     }
 
     int topfun(){
         if (end == -1){
-            cout<<"Stack is empty";
+            cout<<"Queue is empty";
             return -1;
         }else{
-            return stack[start];
+            return Q[start];
         }
     }
 
     void pop(){
         if (end == -1){
-            cout<<"Stack is empty";
+            cout<<"Queue is empty";
         }else{
             
             start = start + 1;
@@ -111,7 +111,7 @@ class StackLL{
 int main(){
 
     stImpl s;
-    stQImpl s1;
+    QImpl s1;
     s.push(5);
     s.push(10);
     s.push(15);
