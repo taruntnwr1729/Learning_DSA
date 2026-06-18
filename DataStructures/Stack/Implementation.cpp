@@ -4,6 +4,42 @@
 
 using namespace std;
 
+class stQImpl{
+    int start = 0;
+    int stack[10];
+    
+
+    public:
+    int end = -1;
+    void push(int x){
+        if ( end >= 10 ){
+            cout<<"Overflow"<<endl;
+        }else{
+            end = end + 1;
+            stack[end] = x;
+        }
+    }
+
+    int topfun(){
+        if (end== -1){
+            cout<<"Stack is empty";
+        }else{
+            return stack[start];
+        }
+    }
+
+    void pop(){
+        if (end = -1){
+            cout<<"Stack is empty";
+        }else{
+            
+            start = start + 1
+        }
+
+    }
+
+};
+
 
 class stImpl{
     int top = -1;
@@ -44,16 +80,24 @@ class stImpl{
 int main(){
 
     stImpl s;
+    stQImpl s1;
     s.push(5);
     s.push(10);
     s.push(15);
     s.push(20);
     cout << "Top element: " << s.topfun() << endl;
     s.pop();
-    
-    
     cout << "Top element: " << s.topfun() << endl; // Should print 10
 
+
+
+    s1.push(5);
+    s1.push(10);
+    s1.push(15);
+    s1.push(20);
+    cout << "Top element: " << s1.topfun() << endl;
+    s1.pop();
+    cout << "Top element: " << s1.topfun() << endl; 
 
 
     return 0;
