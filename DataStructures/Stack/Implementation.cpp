@@ -7,8 +7,6 @@ using namespace std;
 class QImpl{
     int start = 0;
     int Q[10];
-    
-
     public:
     int end = -1;
     void push(int x){
@@ -105,8 +103,57 @@ class StackLL{
         size = size + 1;
         
     }
+    void pop(){
+        Node* temp = top;
+        top = top->next;
+        delete temp;
+        size = size - 1;
+    }
 
+    int top(){
+        Node* temp = top;
+        return temp->data;
+    }
 
+};
+
+/*-----QUEUE USING LINKED LIST-------*/
+class QueueLL{
+    Node* start;
+    Node* end;
+    int size = 0;
+
+    void push(int x){
+        Node* temp = new Node(x);
+
+        if(start == NULL){
+            start = end = temp;
+        }else{
+            end->next = temp;
+            size = size + 1;
+        }
+    }
+    void pop(){
+        Node* temp;
+        if(start == NULL){
+            start = end = temp;
+
+    }else{
+        temp = start;
+        start = start->next;
+        delete temp;
+        size = size - 1;
+    }
+}
+
+    int top(){
+        if(start == NULL){
+            return -1; 
+        }
+        Node* temp;
+        temp = start;
+        return temp->data;
+    }
 };
 
 int main(){
