@@ -22,17 +22,12 @@ bool isBalanced(string expr){
             (ch==']' && topchar == '[')){
             s.pop();
             }else{
-                return false;
-
+                return false; 
             }
         }
-
     }
-
     return s.empty();
-
 }
-
 
 int main(){
 
