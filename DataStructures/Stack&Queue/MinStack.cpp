@@ -9,29 +9,35 @@ class MinStackPairs{
 private:
     stack<pair<int,int>> st;
 public:
-
+//What we did?
+//We just pushed the elements with the last minimum history as their second element
+//So every element stores the minimum element
     void push(int val){
-        if (st.empty()){
+        if (st.empty()){ //if the stack is empty push the element as val and min both
             st.push({val, val});
         }else{
-            int current_min = st.top().second;
-            st.push({val, min(val,current_min)});
+            int current_min = st.top().second;//top stack's second element is minimum right now
+            st.push({val, min(val,current_min)});//push the given value and compare it with the current minimum
+            //if it is smaller than top stack's second element becomes value which is the minimum value
+            //if not then previous value is sustained as the minimum value
         }
     }
 
     void pop(){
-        if(!st.empty()){
-            st.pop();
+        if(!st.empty()){//if the stack is not empty then pop the top stack
+
+            st.pop();//this will take out the top element and history of minimum element with it too,
+                    //after this the next stack will tell us which is the minimum element
         }
     }
 
     int top(){
         if(st.empty()) return -1;
-        return st.top().first;
+        return st.top().first; //this returns the top value of stack
     }
 
     int getMin(){
-        if(st.empty()) return -1;
+        if(st.empty()) return -1; 
         return st.top().second;
     }
 };
