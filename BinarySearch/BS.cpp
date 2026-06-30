@@ -47,6 +47,46 @@ pair<int,int>RangeofEl(vector<int> &arr, int x, int n){
     return {lb, (upperbound(arr,x,n)-1)};
 
 }
+
+int firstOccurence(vector<int> &arr, int x, int n){
+    int low = 0;
+    int high = n - 1;
+    int first = -1;
+    
+    while(low<=high){
+        int mid = (low+high)/2;
+
+        if(arr[mid]==x){
+            first = mid;
+            high = mid - 1;
+        }else if(arr[mid]<x){
+            low = mid+1;
+        }else{
+            high = mid - 1;
+        }
+    }
+    return first;
+}
+
+int lastOccurence(vector<int> &arr, int x, int n){
+    int low = 0;
+    int high = n - 1;
+    int last = -1;
+    
+    while(low<=high){
+        int mid = (low+high)/2;
+
+        if(arr[mid]==x){
+            last = mid;
+            low = mid + 1;
+        }else if(arr[mid]<x){
+            low = mid+1;
+        }else{
+            high = mid - 1;
+        }
+    }
+    return last;
+}
 int main(){
     vector<int> arr = {1, 2, 3, 4, 5, 6, 7,7,8,9,10,11,11,12,13};
     int n = arr.size();
