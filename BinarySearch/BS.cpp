@@ -21,14 +21,37 @@ int upperbound(vector<int> &arr, int x, int n ){
 
 }
 
+int lowerbound(vector<int> &arr, int x, int n ){
+    int low = 0, high = n - 1;
+    int ans = n;
+    while(low<=high){
+        int mid = low + (high - low)/2;
+
+        if(arr[mid]>=x){
+            ans = mid;
+            high = mid - 1;
+        }else{
+            low = mid+1;
+        }
+
+    }
+    
+    return ans;
+
+}
+
+
 int main(){
     vector<int> arr = {1, 2, 3, 4, 5, 6, 7,7,8,9,10,11,11,12,13};
     int n = arr.size();
     int x = 9;
-    int index = upperbound(arr, x, n);
-
+    int indexUP = upperbound(arr, x, n);
+    int indexLOW = lowerbound(arr, x, n);
     cout<<"The upperbound of "<< x <<" is at index: "<<index<<endl;
-    cout<<"The value at that index is:" << arr[index]<<endl;
+    cout<<"The value at that index is:" << arr[indexUP]<<endl;
+
+    cout<<"The lowerbound of "<< x <<" is at index: "<<index<<endl;
+    cout<<"The value at that index is:" << arr[indexLOW]<<endl;
 
     return 0;
 }
