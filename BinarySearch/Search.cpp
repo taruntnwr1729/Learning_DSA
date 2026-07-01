@@ -15,6 +15,11 @@ int RotatedSearch(vector<int> &arr, int n, int target){
         if(arr[mid]==target){
             return mid;
         }
+        if(arr[low]==arr[mid]==arr[high]){
+            low++, high--;
+            continue;
+        }
+
         //left half sorted
         if(arr[low]<=arr[mid]){
             if(arr[low]<=target && target <= arr[mid]){
@@ -23,7 +28,7 @@ int RotatedSearch(vector<int> &arr, int n, int target){
             low = mid+1;
         }
         //right half sorted
-    }else{
+        }else{
         if(arr[mid]<= target && target <= arr[high]){
             low = mid + 1;
         }
