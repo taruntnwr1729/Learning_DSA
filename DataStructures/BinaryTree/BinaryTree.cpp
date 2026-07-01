@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <queue>
 using namespace std;
 
 struct Node{
@@ -57,6 +58,39 @@ void Postorder(Node* root){
     Postorder(root->right);
     cout<<root->data<<" ";
 }
+
+void LevelOrder(Node* root){
+    if(root==NULL){
+        return;
+    }
+    queue<Node*> q;
+    q.push(root);
+    q.push(NULL);
+    while(q.size()>0){
+        Node* current = q.front();
+        q.pop();
+        if (current == NULL){
+            if(!q.empty()){
+                cout<<endl;
+                q.push(NULL);
+                continue;
+            }else{
+                break;
+            }
+        }
+        cout<<current->data<<" ";
+
+        if(current->left != NULL){
+            q.push(current->left);
+        }
+        if(current->right != NULL){
+            q.push(current->right);
+        }
+
+    }
+
+}
+
 int main(){
     Node* root = new Node(10);
     root->left = new Node(20);
