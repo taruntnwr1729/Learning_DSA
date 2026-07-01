@@ -15,18 +15,25 @@ int RotatedSearch(vector<int> &arr, int n, int target){
         if(arr[mid]==target){
             return mid;
         }
+
+        //this condition is for arrays like {3,1,2,3,3,3}
         if(arr[low]==arr[mid]==arr[high]){
             low++, high--;
             continue;
         }
 
         //left half sorted
+        //we check if the low element is really lesser than mid element
+        //then we check if my target lies in the range of low and mid elements
+        //if it is true then we conclude that the left half is sorted and our element lies in it
+        //so we take our high to mid-1, and scraps the right half of the array to find our target
         if(arr[low]<=arr[mid]){
             if(arr[low]<=target && target <= arr[mid]){
             high= mid -1;
             }else{
             low = mid+1;
         }
+        
         //right half sorted
         }else{
         if(arr[mid]<= target && target <= arr[high]){
