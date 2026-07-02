@@ -155,7 +155,27 @@ int diameter(Node* root){
     int currdiam = Height(root->left) + Height(root->right);
 
     return max( leftDiam, rightDiam, currdiam);
+    //Bad time complexity O(n^2)
+    //because we are using height function too
+}
 
+int ans = 0;
+//this is optimised solution for the above problem 
+int HEIGHTFUN(Node* root){
+    
+    if(root==NULL){
+        return 0;
+    }
+    int LH = HEIGHTFUN(root->left);
+    int RH = HEIGHTFUN(root->right);
+    ans = max(ans, LH+RH);
+    
+    return max(LH,RH)+1;
+}
+int DIAMETERFUN(Node* root){
+    HEIGHTFUN(root);
+
+    return ans;
 }
 
 
