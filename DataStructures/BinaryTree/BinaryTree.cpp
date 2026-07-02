@@ -91,6 +91,16 @@ void LevelOrder(Node* root){
 
 }
 
+int Height(Node* root){
+    if(root==NULL){
+        return;
+    }
+    int LH = Height(root->left);
+    int RH = Height(root->right);
+    return max(LH,RH)+1;
+
+}
+
 int main(){
     Node* root = new Node(10);
     root->left = new Node(20);
