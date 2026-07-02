@@ -124,6 +124,16 @@ int sum(Node* root){
     return sumtotal;
 }
 
+bool sametree(Node* p, Node* q){
+    if(p==NULL||q==NULL){
+        p==q;
+    }
+    bool leftpart=sametree(p->left,q->left);
+    bool rightpart=sametree(p->right,q->right);
+
+    return leftpart && rightpart && p->data == q->data;
+}
+
 
 
 int main(){
