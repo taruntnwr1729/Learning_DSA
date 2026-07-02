@@ -134,6 +134,29 @@ bool sametree(Node* p, Node* q){
     return leftpart && rightpart && p->data == q->data;
 }
 
+bool isSubtree(Node* root, Node* subroot){
+    if(root == NULL || subroot == NULL){
+        return root == subroot;
+    }
+    if(root->data==subroot->data && sametree(root,subroot)){
+        return true;
+    }
+    return isSubtree(root->left, subroot)||
+    isSubtree(root->right, subroot);
+}
+
+int diameter(Node* root){
+    if(root==NULL){
+        return 0;
+    }
+    int leftDiam = diameter(root->left);
+    int rightDiam = diameter(root->right);
+
+    int currdiam = Height(root->left) + Height(root->right);
+
+    return max( leftDiam, rightDiam, currdiam);
+
+}
 
 
 int main(){
