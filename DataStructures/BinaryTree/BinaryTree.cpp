@@ -107,10 +107,23 @@ int count(Node* root){
     }
     int countL = count(root->left);
     int countR = count(root->right);
-    int sum = countL + countR;
+    int sum = countL + countR + 1;
 
     return sum;
 }
+
+
+int sum(Node* root){
+    if(root==NULL){
+        return 0;
+    }
+    int sumL = sum(root->left);
+    int sumR = sum(root->right);
+    int sumtotal = sumL + sumR + root->data;
+
+    return sumtotal;
+}
+
 
 
 int main(){
