@@ -93,13 +93,25 @@ void LevelOrder(Node* root){
 
 int Height(Node* root){
     if(root==NULL){
-        return;
+        return 0;
     }
     int LH = Height(root->left);
     int RH = Height(root->right);
     return max(LH,RH)+1;
-
+    //TIME COMPLEXITY O(n)
 }
+
+int count(Node* root){
+    if(root==NULL){
+        return 0;
+    }
+    int countL = count(root->left);
+    int countR = count(root->right);
+    int sum = countL + countR;
+
+    return sum;
+}
+
 
 int main(){
     Node* root = new Node(10);
@@ -107,6 +119,7 @@ int main(){
     root->right = new Node(30);
     root->right->left = new Node(50);
     root->left->right = new Node(70);
+    root->left->right->right = new Node(80);
     cout<<endl;
     cout<<"Preorder: ";
     Preorder(root);
@@ -118,6 +131,8 @@ int main(){
     Postorder(root);
     cout<<endl;
     cout << "Maximum depth of the tree is: " << maxDepth(root) << endl;
+
+    cout<<"Height of the tree is: "<<Height(root);
 
     return 0;
 }
