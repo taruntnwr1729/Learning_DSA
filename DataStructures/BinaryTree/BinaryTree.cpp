@@ -177,8 +177,33 @@ int DIAMETERFUN(Node* root){
 
     return ans;
 }
+void Morris(Node* root){
+    Node* curr = root;
 
+    while(curr !=NULL){
+        if(curr->left == NULL){
+            cout<<curr->data;
+            curr = curr->right;
+        }
+        else{
+            Node* IP = curr->left;
+            while(IP->right != NULL && IP->right != curr){
+                IP = IP->right;
 
+            }
+            if(IP->right == NULL){
+                IP->right = curr; //here I connected the predecessor with the root node
+                //so that it goes back
+                curr = curr->left;
+            }else{
+                IP->right = NULL;
+                cout<<curr->data;
+                curr = curr ->right;
+            }
+            
+        }
+    }
+}
 int main(){
     Node* root = new Node(10);
     root->left = new Node(20);
