@@ -61,6 +61,35 @@ Node* LoopStart(Node* head){
 
 }
 
+int LoopLength(Node* head){
+    if(head==NULL){
+        return 0;
+    }
+
+    Node* slow = head;
+    Node* fast = head;
+
+    while(fast!=NULL && fast->next != NULL){
+        fast = fast->next->next;
+        slow = slow->next;
+        int counter = 1;
+        if(slow==fast){
+            fast= fast->next;
+            while(slow != fast){
+                fast = fast->next;
+                counter++;
+                
+            }
+            return counter;
+            
+        }
+        
+        
+    }
+    return 0;
+
+}
+
 int main() {
     // --- CASE 1: Linear Linked List (No Loop) ---
     // 10 -> 20 -> 30 -> 40 -> NULL
