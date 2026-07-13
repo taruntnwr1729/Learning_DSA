@@ -14,6 +14,10 @@ struct Node{
 
 bool DetectLoop(Node* head){
 
+    if(head == NULL){
+        return false;
+    }
+
     Node* slow = head;
     Node* fast = head;
 
@@ -28,14 +32,33 @@ bool DetectLoop(Node* head){
     return false;
 }
 
-
-void printList(Node* head) {
-    Node* temp = head;
-    while (temp != NULL) {
-        cout << temp->data << " -> ";
-        temp = temp->next;
+Node* LoopStart(Node* head){
+    if(head==NULL){
+        return NULL;
     }
-    cout << "NULL" << endl;
+
+    Node* slow = head;
+    Node* fast = head;
+    
+    while(fast != NULL && fast->next !=NULL){
+        fast = fast->next->next;
+        slow = slow->next;
+
+        if(slow==fast){
+            slow = head;
+            while(slow != fast){
+                slow = slow->next;
+                fast = fast->next;
+
+            }
+            return slow;
+
+            
+        }
+    }
+    return NULL;
+
+
 }
 
 int main() {
@@ -45,9 +68,9 @@ int main() {
     head->next = new Node(20);
     head->next->next = new Node(30);
     head->next->next->next = new Node(40);
-
-    cout << "Original List: ";
-    printList(head);
+    head->next->next->next->next = new Node(50);
+    head->next->next->next->next->next= new Node(60); 
+    
 
     // Call DetectLoop and print the result
     if (DetectLoop(head)) {
@@ -56,34 +79,24 @@ int main() {
         cout << "Is there any loop? : No" << endl;
     }
 
-    // --- CASE 2: Creating a Loop ---
-    // Let's connect the last node (40) back to the second node (20)
-    // 10 -> 20 -> 30 -> 40 
-    //       ^           |
-    //       |___________|
-    head->next->next->next->next = head->next; 
+
+    head->next->next->next->next->next->next = head->next; 
 
     cout << "\nAfter creating a cycle..." << endl;
     
-    // Note: We cannot call printList(head) here anymore because 
-    // it would result in an infinite loop!
+
     
     if (DetectLoop(head)) {
         cout << "Is there any loop? : Yes" << endl;
     } else {
         cout << "Is there any loop? : No" << endl;
     }
-
-    // --- Clean up memory ---
-    // Because Case 2 has a loop, we break the loop first so we can safely delete the memory
-    head->next->next->next->next = NULL; 
     
-    Node* temp;
-    while (head != NULL) {
-        temp = head;
-        head = head->next;
-        delete temp;
-    }
+    Node* start = LoopStart(head);
+    
+    
+    cout<<"Starting point of loop is: "<<start->data;
+
 
     return 0;
 }
