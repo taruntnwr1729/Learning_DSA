@@ -6,30 +6,32 @@ struct Node{
     int data;
     Node* next;
     
-    public:
     Node(int val){
         data = val;
         next = NULL;
+        
     }
-
-
 };
 
-int MiddleofLL(Node* head){
+Node* ReverseLL(Node* head){
+
     if(head == NULL){
-        return -1;
+        return NULL;
     }
 
-    Node* forward = head; //Hare
-    Node* backward = head; //Tortoise
-
-    while(forward!=NULL && forward->next !=NULL){
-        forward = forward->next->next;
-        backward = backward->next;
-
-    }
+    Node* temp = head;
+    Node* prev = NULL;
+    Node* front;
     
-    return backward->data;
+    while(temp!=NULL){
+        front = temp->next;
+        temp->next = prev;
+        prev = temp;
+        temp = front;
+
+    }
+
+    return prev;
 }
 
 void printList(Node* head) {
@@ -49,10 +51,15 @@ int main() {
     head->next->next->next = new Node(40);
 
     // 2. Print original list
-    cout << "Original List: "<<endl;
+    cout << "Original List: ";
     printList(head);
 
-    cout<<"Middle of linked list: "<<MiddleofLL(head)<<endl;
+    // 3. Reverse the list
+    head = ReverseLL(head);
+
+    // 4. Print reversed list
+    cout << "Reversed List: ";
+    printList(head);
 
     // 5. Clean up memory (Good practice!)
     Node* temp;
