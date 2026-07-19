@@ -19,6 +19,7 @@ int SumByD(vector <int> arr, int div){
 int smallDivisor(vector <int> arr, int limit){
 
     int low = 1; int high = *max_element(arr.begin(), arr.end());
+    
     while(low<=high){
         int mid = low + (high - low)/2;
         if(SumByD(arr,mid)<= limit){
