@@ -75,6 +75,21 @@ vector<int> MoveZero(vector<int> arr){
 
 }
 
+bool LinearSearch(vector<int>arr, int num){
+    int n = arr.size();
+    if(n==0){
+        return false;
+    }
+    for(int i = 0; i<n; i++){
+        if(arr[i]==num){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+}
+
 int main() {
     vector<int> arr = {1, 2, 3, 4, 5};
     int d = 2; 
