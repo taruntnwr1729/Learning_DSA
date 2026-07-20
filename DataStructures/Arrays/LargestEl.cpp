@@ -65,6 +65,19 @@ bool isSorted(vector <int> arr){
     }
     return true;
 }
+
+int removeDuplicates(vector <int> arr){
+    int i = 0;
+    int n = arr.size();
+
+    for(int j = 1; j<n; j++){
+        if(arr[i] != arr[j]){
+            i++;
+        }
+    }
+    return i+1;
+}
+
 int main(){
     vector<int> arr = {1,2,3,66,5,4,32,7};
     cout<<"Largest element: "<<Largestelement(arr)<<endl;
