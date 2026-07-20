@@ -5,10 +5,9 @@
 #include <cmath>
 using namespace std;
 
-void Reverse(vector<int> arr){
+void Reverse(vector<int> arr,int start, int end){
 
-    int start = 0;
-    int end = arr.size();
+
 
     while(start<=end){
         int temp = arr[start];
