@@ -44,7 +44,35 @@ vector<int> LeftRotate(vector<int> arr, int d) {
     reverse(arr.begin() + d, arr.end());
     reverse(arr.begin(), arr.end());//then we combined the two reversed arrays and reversed them combined
 
-    
+    return arr;
+}
+
+vector<int> MoveZero(vector<int> arr){
+    int n = arr.size();
+    if(n==0){
+        return arr;
+    }
+    int j = -1;
+    for(int i = 0; i<n ; i++){
+        if(arr[i]== 0){
+            j = i;
+            break;
+        }
+    }
+    if(j == -1){
+        return arr; //it means no zeroes found
+    }
+
+    for(int i = j+1;i<n;i++){
+        if(arr[i]!=0){
+            swap(arr[i],arr[j]);
+            j++;
+        }
+    }
+
+    return arr;
+
+
 }
 
 int main() {
