@@ -1,0 +1,62 @@
+#include <iostream>
+#include <climits>
+#include<algorithm>
+#include <vector>
+#include <cmath>
+using namespace std;
+
+void Reverse(vector<int> arr){
+
+    int start = 0;
+    int end = arr.size();
+
+    while(start<=end){
+        int temp = arr[start];
+        arr[start]=arr[end];
+        arr[end]=temp;
+        start++;
+        end--;
+    }
+
+
+}
+
+vector <int> RotateArr(vector<int>arr){
+    int n = arr.size();
+    int temp = arr[0];
+    for(int i =1; i<n; i++){
+        arr[i-1]=arr[i];
+
+    }
+    arr[n-1]=temp;
+    return arr;
+}
+
+vector<int> LeftRotate(vector<int> arr, int d) {
+    int n = arr.size();
+    if (n == 0) return arr;
+    
+   
+    d = d % n; 
+
+    
+    reverse(arr.begin(), arr.begin() + d); //we break the array in two and reversed them individually
+
+    reverse(arr.begin() + d, arr.end());
+    reverse(arr.begin(), arr.end());//then we combined the two reversed arrays and reversed them combined
+
+    
+}
+
+int main() {
+    vector<int> arr = {1, 2, 3, 4, 5};
+    int d = 2; 
+
+    vector<int> Rarr = LeftRotate(arr, d);
+
+    for (int i = 0; i < Rarr.size(); i++) {
+        cout << Rarr[i] << " ";
+    }
+
+    return 0;
+}
