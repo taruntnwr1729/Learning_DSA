@@ -111,7 +111,27 @@ vector<int> UnionOfArr(vector<int> arr1, vector <int> arr2){
             j++;
         }
     }
+
+    while(j<n2){
+        if(SortedArr.size()==0 || SortedArr.back() != arr2[j]){
+                SortedArr.push_back(arr2[j]);
+            }
+            j++;
+
+    }
+
+    while(i<n1){
+        if(arr1[i] <= arr2[j]){
+            if(SortedArr.size()==0 || SortedArr.back() != arr1[i]){
+                SortedArr.push_back(arr1[i]);
+
+
+            }
+            i++;
+
+    }
     return SortedArr;
+}
 }
 
 int main() {
