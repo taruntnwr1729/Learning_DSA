@@ -121,9 +121,9 @@ vector<int> UnionOfArr(vector<int> arr1, vector <int> arr2){
     }
 
     while(i<n1){
-        if(arr1[i] <= arr2[j]){
-            if(SortedArr.size()==0 || SortedArr.back() != arr1[i]){
-                SortedArr.push_back(arr1[i]);
+        
+        if(SortedArr.size()==0 || SortedArr.back() != arr1[i]){
+            SortedArr.push_back(arr1[i]);
 
 
             }
@@ -132,6 +132,27 @@ vector<int> UnionOfArr(vector<int> arr1, vector <int> arr2){
     }
     return SortedArr;
 }
+
+vector<int> IntersectionOfArr(vector<int> arr1, vector <int> arr2){
+    vector<int> SortedArr;
+    int n1= arr1.size();
+    int n2 = arr2.size();
+    int i = 0;
+    int j = 0;
+
+    while(i<n1 & j < n2){
+        if(arr1[i]<arr2[j]){
+            i++;
+        }
+        else if(arr2[j]<arr1[i]){
+            j++;
+        }else{
+            SortedArr.push_back(arr1[i]);
+            i++;
+            j++;
+        }
+    }
+
 }
 
 int main() {
