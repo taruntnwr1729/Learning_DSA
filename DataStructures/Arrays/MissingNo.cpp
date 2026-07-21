@@ -14,6 +14,21 @@ int missingNo(const vector<int>& arr) {
 
     return OriginalSum - sum;
 }
+int ConsecutiveOnes(const vector <int> arr){
+    int n = arr.size();
+    int maxi = 0;
+    int count = 0;
+
+    for(int i = 0; i<n; i++){
+        if(arr[i]==1){
+            count +=1;
+            maxi = max(maxi,count);
+        }else{
+            count = 0;
+        }
+    }
+    return maxi;
+}
 
 int main() {
     vector<int> arr = {1, 2, 3, 5, 6, 7};
