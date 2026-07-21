@@ -90,6 +90,30 @@ bool LinearSearch(vector<int>arr, int num){
     
 }
 
+vector<int> UnionOfArr(vector<int> arr1, vector <int> arr2){
+    vector<int> SortedArr;
+    int n1= arr1.size();
+    int n2 = arr2.size();
+    int i = 0;
+    int j = 0;
+    while(i<n1 && j<n2){
+        if(arr1[i] <= arr2[j]){
+            if(SortedArr.size()==0 || SortedArr.back() != arr1[i]){
+                SortedArr.push_back(arr1[i]);
+
+
+            }
+            i++;
+        }else{
+            if(SortedArr.size()==0 || SortedArr.back() != arr2[j]){
+                SortedArr.push_back(arr2[j]);
+            }
+            j++;
+        }
+    }
+    return SortedArr;
+}
+
 int main() {
     vector<int> arr = {1, 2, 3, 4, 5};
     int d = 2; 
