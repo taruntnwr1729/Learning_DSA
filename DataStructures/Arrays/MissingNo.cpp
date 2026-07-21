@@ -1,27 +1,25 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
-#include <cmath>
-#include <climits>
 
 using namespace std;
 
-int missingNo(vector <int> arr, int N){
-    int missingNo;
-    int sum = 0;
-    int OriginalSum = (N*(N+1))/2;
+int missingNo(const vector<int>& arr) {
+    long long N = arr.size() + 1;
+    long long sum = 0;
+    long long OriginalSum = (N * (N + 1)) / 2;
 
-    for(int i = 0; i<arr.size(); i++){
+    for (int i = 0; i < arr.size(); i++) {
         sum += arr[i];
     }
-    missingNo = OriginalSum - sum;
 
-    return missingNo;
+    return OriginalSum - sum;
 }
 
-int main(){
-    vector <int> arr = {1,2,3,5,6,7};
+int main() {
+    vector<int> arr = {1, 2, 3, 5, 6, 7};
+    
+    int result = missingNo(arr);
+    cout << "Missing number is: " << result << endl;
 
     return 0;
-
 }
