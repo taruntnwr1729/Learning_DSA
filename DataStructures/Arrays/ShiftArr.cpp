@@ -140,18 +140,22 @@ vector<int> IntersectionOfArr(vector<int> arr1, vector <int> arr2){
     int i = 0;
     int j = 0;
 
-    while(i<n1 & j < n2){
+    while(i<n1 && j < n2){
         if(arr1[i]<arr2[j]){
             i++;
         }
         else if(arr2[j]<arr1[i]){
             j++;
         }else{
-            SortedArr.push_back(arr1[i]);
+            if(SortedArr.empty() || SortedArr.back() != arr1[i]){
+                SortedArr.push_back(arr1[i]);
+
+            }
             i++;
             j++;
         }
     }
+    return SortedArr;
 
 }
 
