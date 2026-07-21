@@ -30,6 +30,16 @@ int ConsecutiveOnes(const vector <int> arr){
     return maxi;
 }
 
+int getSingleElement(vector <int> arr){
+    int xorr = 0;
+    int n = arr.size();
+    for(int i = 0; i<n ; i++){
+        xorr = xorr^arr[i];
+
+    }
+    return xorr;
+}
+
 int main() {
     vector<int> arr = {1, 2, 3, 5, 6, 7};
     
