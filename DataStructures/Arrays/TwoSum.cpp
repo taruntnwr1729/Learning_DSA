@@ -23,7 +23,7 @@ string TwoSum(vector <int> arr, int target){
         }
 
     }
-    return "NO"
+    return "NO";
 
 }
 
