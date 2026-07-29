@@ -29,6 +29,6 @@ class BankAccount{
                 cout<<"Invalid Deposit"<<endl;
 
             }
-
         }
+
 };
